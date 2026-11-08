@@ -12,51 +12,49 @@
       min-height: 100vh;
     }
     .app {
-      max-width: 400px;
-      margin: 20px auto;
+      max-width: 420px;
+      margin: 15px auto;
       background: white;
       border-radius: 30px;
       padding: 20px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.15);
       text-align: center;
     }
-    .robot {
-      font-size: 80px;
-      margin: 10px;
-    }
+    .robot { font-size: 70px; }
     h1 { color: #d81b60; margin: 5px; }
-    .stats {
-      background: #f8f0ff;
-      border-radius: 20px;
-      padding: 10px;
-      margin: 15px 0;
+    .highlight {
+      background: #fff3e0;
+      border-radius: 15px;
+      padding: 8px;
+      margin: 10px 0;
       font-weight: bold;
     }
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 10px;
     }
     button {
       background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       border: none;
-      border-radius: 20px;
-      padding: 16px 10px;
-      font-size: 15px;
+      border-radius: 18px;
+      padding: 14px 8px;
+      font-size: 14px;
       font-weight: bold;
       color: #333;
       cursor: pointer;
     }
     .screen { display: none; }
     .active { display: block; }
-    .question { font-size: 30px; color: #7b1fa2; margin: 20px 0; }
+    .question { font-size: 28px; color: #7b1fa2; margin: 15px 0; }
+    .correct { background: #81c784 !important; }
   </style>
 </head>
 <body>
   <div class="app">
     <div class="robot">🤖</div>
     <h1>Lär dig med robot</h1>
-    <div class="stats">🔥 5 &nbsp; 💎 10 &nbsp; 🔷 10 &nbsp; 💜 10</div>
+    <div class="highlight">🔥 Streak: 5 &nbsp; 💎 Gul: 10 &nbsp; 🔷 Blå: 10 &nbsp; 💜 Lila: 10</div>
 
     <div id="home" class="screen active">
       <div class="grid">
@@ -69,52 +67,117 @@
         <button onclick="showScreen('spanska')">Spanska</button>
         <button onclick="showScreen('rymden')">Rymden</button>
         <button onclick="showScreen('gator')">Gåtor</button>
+        <button onclick="showScreen('varlden')">Hur världen fungerar</button>
         <button onclick="showScreen('help')">Behöver du hjälp?</button>
         <button onclick="showScreen('books')">Böcker</button>
-        <button onclick="showScreen('streakScreen')">Streak</button>
       </div>
     </div>
 
     <div id="matte" class="screen">
       <h2>Matte</h2>
       <div class="question">7 + 5 = ?</div>
-      <button onclick="correct()" style="background:#81c784;">12</button>
-      <button onclick="wrong()" style="background:#ff8a65;">10</button>
-      <button onclick="wrong()" style="background:#ff8a65;">11</button>
+      <button class="correct" onclick="correct()">12</button>
+      <button onclick="wrong()">10</button>
+      <button onclick="wrong()">11</button>
+      <br><br>
+      <button onclick="showScreen('home')">Tillbaka</button>
+    </div>
+
+    <div id="so" class="screen">
+      <h2>SO</h2>
+      <p>Vad heter Sveriges huvudstad?</p>
+      <button onclick="alert('Rätt! Stockholm!')">Stockholm</button>
+      <button onclick="alert('Försök igen!')">Göteborg</button>
+      <br><br>
+      <button onclick="showScreen('home')">Tillbaka</button>
+    </div>
+
+    <div id="no" class="screen">
+      <h2>NO</h2>
+      <p>Vad behöver en växt för att växa?</p>
+      <button onclick="alert('Rätt! Vatten och sol!')">Vatten och sol</button>
+      <button onclick="alert('Försök igen!')">Bara vatten</button>
+      <br><br>
+      <button onclick="showScreen('home')">Tillbaka</button>
+    </div>
+
+    <div id="svenska" class="screen">
+      <h2>Svenska</h2>
+      <p>Vilket ord är ett verb?</p>
+      <button onclick="alert('Rätt! Springa!')">Springa</button>
+      <button onclick="alert('Försök igen!')">Hund</button>
+      <br><br>
+      <button onclick="showScreen('home')">Tillbaka</button>
+    </div>
+
+    <div id="engelska" class="screen">
+      <h2>Engelska</h2>
+      <p>What is "hund" in English?</p>
+      <button onclick="alert('Correct! Dog!')">Dog</button>
+      <button onclick="alert('Try again!')">Cat</button>
+      <br><br>
+      <button onclick="showScreen('home')">Tillbaka</button>
+    </div>
+
+    <div id="persiska" class="screen">
+      <h2>Persiska</h2>
+      <p>سلام به فارسی چه می‌شود؟</p>
+      <button onclick="alert('درست! سلام')">سلام</button>
+      <button onclick="alert('دوباره امتحان کن')">خداحافظ</button>
+      <br><br>
+      <button onclick="showScreen('home')">Tillbaka</button>
+    </div>
+
+    <div id="spanska" class="screen">
+      <h2>Spanska</h2>
+      <p>¿Cómo se dice "hej" en español?</p>
+      <button onclick="alert('¡Correcto! Hola!')">Hola</button>
+      <button onclick="alert('¡Inténtalo de nuevo!')">Adiós</button>
+      <br><br>
+      <button onclick="showScreen('home')">Tillbaka</button>
+    </div>
+
+    <div id="rymden" class="screen">
+      <h2>Rymden</h2>
+      <p>Vilken planet är närmast solen?</p>
+      <button onclick="alert('Rätt! Merkurius!')">Merkurius</button>
+      <button onclick="alert('Försök igen!')">Jorden</button>
+      <br><br>
+      <button onclick="showScreen('home')">Tillbaka</button>
+    </div>
+
+    <div id="gator" class="screen">
+      <h2>Gåtor</h2>
+      <p>Vad har fyra ben på morgonen, två på dagen och tre på kvällen?</p>
+      <button onclick="alert('Rätt! En människa!')">En människa</button>
+      <button onclick="alert('Försök igen!')">En hund</button>
+      <br><br>
+      <button onclick="showScreen('home')">Tillbaka</button>
+    </div>
+
+    <div id="varlden" class="screen">
+      <h2>Hur världen fungerar</h2>
+      <p>Varför regnar det?</p>
+      <button onclick="alert('Rätt! Moln blir tunga av vatten!')">Moln blir tunga</button>
+      <button onclick="alert('Försök igen!')">Solen gråter</button>
       <br><br>
       <button onclick="showScreen('home')">Tillbaka</button>
     </div>
 
     <div id="help" class="screen">
       <h2>Behöver du hjälp?</h2>
-      <p>Hej! Jag är din robot. Vad vill du fråga?</p>
+      <p>Hej! Jag är din robot. Skriv vad du vill fråga:</p>
       <textarea rows="4" style="width:90%; border-radius:15px; padding:10px;"></textarea><br><br>
-      <button onclick="alert('Bra fråga! Fortsätt öva!')">Skicka</button>
+      <button onclick="alert('Bra fråga! Fortsätt öva så blir du ännu bättre!')">Skicka</button>
       <button onclick="showScreen('home')">Tillbaka</button>
     </div>
 
     <div id="books" class="screen">
       <h2>Min bokhylla</h2>
-      <button onclick="alert('Roboten läser...')">Sagans skogar</button><br><br>
-      <button onclick="alert('Roboten läser...')">Rymden & stjärnor</button><br><br>
+      <button onclick="alert('Roboten läser: Sagans skogar...')">Sagans skogar</button><br><br>
+      <button onclick="alert('Roboten läser: Rymden & stjärnor...')">Rymden & stjärnor</button><br><br>
       <button onclick="showScreen('home')">Tillbaka</button>
     </div>
-
-    <div id="streakScreen" class="screen">
-      <h2>Din Streak</h2>
-      <p>Mån ✅ Tis ✅ Ons ✅ Tor ✅ Fre ❄️</p>
-      <p>5 dagar i rad!</p>
-      <button onclick="showScreen('home')">Tillbaka</button>
-    </div>
-
-    <div id="so" class="screen"><h2>SO</h2><p>Samhälle och geografi!</p><button onclick="showScreen('home')">Tillbaka</button></div>
-    <div id="no" class="screen"><h2>NO</h2><p>Natur och teknik!</p><button onclick="showScreen('home')">Tillbaka</button></div>
-    <div id="svenska" class="screen"><h2>Svenska</h2><p>Läs och skriv!</p><button onclick="showScreen('home')">Tillbaka</button></div>
-    <div id="engelska" class="screen"><h2>Engelska</h2><p>Hello! Let's learn English.</p><button onclick="showScreen('home')">Tillbaka</button></div>
-    <div id="persiska" class="screen"><h2>Persiska</h2><p>سلام! بیایید فارسی یاد بگیریم.</p><button onclick="showScreen('home')">Tillbaka</button></div>
-    <div id="spanska" class="screen"><h2>Spanska</h2><p>¡Hola! Vamos a aprender español.</p><button onclick="showScreen('home')">Tillbaka</button></div>
-    <div id="rymden" class="screen"><h2>Rymden</h2><p>Stjärnor och planeter!</p><button onclick="showScreen('home')">Tillbaka</button></div>
-    <div id="gator" class="screen"><h2>Gåtor</h2><p>Vad har fyra ben på morgonen, två på dagen och tre på kvällen?</p><button onclick="alert('En människa!')">Svar</button><br><br><button onclick="showScreen('home')">Tillbaka</button></div>
   </div>
 
   <script>
