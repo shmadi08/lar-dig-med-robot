@@ -4,11 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lär dig med robot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Nunito:wght@700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 50%, #a1c4fd 75%, #c2e9fb 100%);
-      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #ffb3c6, #ffd6e0, #cce5ff, #fff0cc);
+      font-family: 'Nunito', 'Comic Sans MS', cursive, sans-serif;
       min-height: 100vh;
     }
     .app {
@@ -17,7 +18,7 @@
       background: rgba(255,255,255,0.95);
       border-radius: 35px;
       padding: 20px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
       text-align: center;
     }
     .robot {
@@ -29,11 +30,11 @@
     .robot-head {
       width: 100px;
       height: 75px;
-      background: #1a1a2e;
-      border-radius: 40px;
+      background: #2c3e50;
+      border-radius: 45px;
       margin: 0 auto;
       position: relative;
-      box-shadow: 0 0 20px #00d4ff;
+      box-shadow: 0 0 18px #00d4ff;
     }
     .eyes {
       display: flex;
@@ -42,11 +43,11 @@
       padding-top: 20px;
     }
     .eye {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       background: #00d4ff;
       border-radius: 50%;
-      box-shadow: 0 0 12px #00d4ff;
+      box-shadow: 0 0 10px #00d4ff;
     }
     .antenna {
       width: 6px;
@@ -69,14 +70,18 @@
       left: -3px;
       box-shadow: 0 0 8px #00d4ff;
     }
-    h1 { color: #d81b60; margin: 5px; font-size: 26px; }
+    h1 { 
+      color: #e91e63; 
+      margin: 5px; 
+      font-size: 28px;
+      font-family: 'Caveat', cursive;
+    }
     .highlight {
-      background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+      background: linear-gradient(135deg, #fff8e1, #ffecb3);
       border-radius: 20px;
       padding: 10px;
       margin: 12px 0;
       font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
     .grid {
       display: grid;
@@ -88,16 +93,16 @@
       border: none;
       border-radius: 20px;
       padding: 16px 10px;
-      font-size: 14px;
+      font-size: 15px;
       font-weight: bold;
       color: #333;
       cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
     button:active { transform: scale(0.96); }
     .screen { display: none; }
     .active { display: block; }
-    .question { font-size: 28px; color: #7b1fa2; margin: 15px 0; }
+    .question { font-size: 26px; color: #7b1fa2; margin: 15px 0; }
   </style>
 </head>
 <body>
