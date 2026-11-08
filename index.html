@@ -7,52 +7,110 @@
   <style>
     body {
       margin: 0;
-      background: linear-gradient(180deg, #ffd6e0, #cce5ff, #fff0cc);
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 25%, #fecfef 50%, #a1c4fd 75%, #c2e9fb 100%);
       font-family: 'Comic Sans MS', cursive, sans-serif;
       min-height: 100vh;
     }
     .app {
       max-width: 420px;
       margin: 15px auto;
-      background: white;
-      border-radius: 30px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 35px;
       padding: 20px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
       text-align: center;
     }
-    .robot { font-size: 70px; }
-    h1 { color: #d81b60; margin: 5px; }
+    .robot {
+      width: 130px;
+      height: 140px;
+      margin: 0 auto 10px;
+      position: relative;
+    }
+    .robot-head {
+      width: 100px;
+      height: 75px;
+      background: #1a1a2e;
+      border-radius: 40px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow: 0 0 20px #00d4ff;
+    }
+    .eyes {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      padding-top: 20px;
+    }
+    .eye {
+      width: 20px;
+      height: 20px;
+      background: #00d4ff;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #00d4ff;
+    }
+    .antenna {
+      width: 6px;
+      height: 18px;
+      background: #3498db;
+      position: absolute;
+      top: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+    .antenna::after {
+      content: '';
+      width: 12px;
+      height: 12px;
+      background: #00d4ff;
+      border-radius: 50%;
+      position: absolute;
+      top: -8px;
+      left: -3px;
+      box-shadow: 0 0 8px #00d4ff;
+    }
+    h1 { color: #d81b60; margin: 5px; font-size: 26px; }
     .highlight {
-      background: #fff3e0;
-      border-radius: 15px;
-      padding: 8px;
-      margin: 10px 0;
+      background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+      border-radius: 20px;
+      padding: 10px;
+      margin: 12px 0;
       font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
     }
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
+      gap: 12px;
     }
     button {
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
       border: none;
-      border-radius: 18px;
-      padding: 14px 8px;
+      border-radius: 20px;
+      padding: 16px 10px;
       font-size: 14px;
       font-weight: bold;
       color: #333;
       cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
+    button:active { transform: scale(0.96); }
     .screen { display: none; }
     .active { display: block; }
     .question { font-size: 28px; color: #7b1fa2; margin: 15px 0; }
-    .correct { background: #81c784 !important; }
   </style>
 </head>
 <body>
   <div class="app">
-    <div class="robot">🤖</div>
+    <div class="robot">
+      <div class="antenna"></div>
+      <div class="robot-head">
+        <div class="eyes">
+          <div class="eye"></div>
+          <div class="eye"></div>
+        </div>
+      </div>
+    </div>
     <h1>Lär dig med robot</h1>
     <div class="highlight">🔥 Streak: 5 &nbsp; 💎 Gul: 10 &nbsp; 🔷 Blå: 10 &nbsp; 💜 Lila: 10</div>
 
@@ -76,7 +134,7 @@
     <div id="matte" class="screen">
       <h2>Matte</h2>
       <div class="question">7 + 5 = ?</div>
-      <button class="correct" onclick="correct()">12</button>
+      <button onclick="correct()" style="background:#81c784;">12</button>
       <button onclick="wrong()">10</button>
       <button onclick="wrong()">11</button>
       <br><br>
