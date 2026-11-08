@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lär dig med robot</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #fce4ec, #e1f5fe, #fff9c4);
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      color: #333;
+    }
+    .robot {
+      font-size: 80px;
+      margin: 10px;
+    }
+    h1 { color: #7b1fa2; }
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    button {
+      background: #81c784;
+      border: none;
+      border-radius: 20px;
+      padding: 15px 25px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    button:hover { background: #66bb6a; }
+    .screen {
+      display: none;
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 500px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .active { display: block; }
+    .crystal { font-size: 30px; }
+  </style>
+</head>
+<body>
+  <div class="robot">🤖</div>
+  <h1>Lär dig med robot!</h1>
+  <p>Hej! Redo att lära dig idag?</p>
+
+  <div id="home" class="screen active">
+    <div class="buttons">
+      <button onclick="showScreen('matte')">Matte</button>
+      <button onclick="showScreen('so')">SO</button>
+      <button onclick="showScreen('no')">NO</button>
+      <button onclick="showScreen('svenska')">Svenska</button>
+      <button onclick="showScreen('engelska')">Engelska</button>
+      <button onclick="showScreen('persiska')">Persiska</button>
+      <button onclick="showScreen('spanska')">Spanska</button>
+      <button onclick="showScreen('rymden')">Rymden</button>
+      <button onclick="showScreen('gator')">Gåtor</button>
+      <button onclick="showScreen('help')">Behöver du hjälp?</button>
+      <button onclick="showScreen('streak')">Streak</button>
+      <button onclick="showScreen('crystals')">Kristaller</button>
+    </div>
+  </div>
+
+  <div id="matte" class="screen">
+    <h2>Matte</h2>
+    <p>Vad är 7 + 5?</p>
+    <button onclick="alert('Rätt! Du är så smart! 🌟')">12</button>
+    <button onclick="alert('Försök igen!')">10</button>
+    <button onclick="alert('Försök igen!')">11</button>
+    <br><br>
+    <button onclick="showScreen('home')">Tillbaka</button>
+  </div>
+
+  <div id="help" class="screen">
+    <h2>Behöver du hjälp?</h2>
+    <p>Hej! Jag är roboten. Vad vill du fråga?</p>
+    <textarea placeholder="Skriv här..." rows="3" style="width:80%; border-radius:10px;"></textarea>
+    <br><br>
+    <button onclick="alert('Roboten säger: Bra fråga! Fortsätt öva!')">Skicka</button>
+    <button onclick="showScreen('home')">Tillbaka</button>
+  </div>
+
+  <div id="streak" class="screen">
+    <h2>Din Streak</h2>
+    <p>5 dagar i rad! 🔥</p>
+    <p>Mån ✅ Tis ✅ Ons ✅ Tor ✅ Fre ❄️</p>
+    <button onclick="showScreen('home')">Tillbaka</button>
+  </div>
+
+  <div id="crystals" class="screen">
+    <h2>Kristaller & Diamanter</h2>
+    <p><span class="crystal">💎</span> Gul: 10 &nbsp; <span class="crystal">🔷</span> Blå: 10 &nbsp; <span class="crystal">💜</span> Lila: 10</p>
+    <button onclick="showScreen('home')">Tillbaka</button>
+  </div>
+
+  <div id="so" class="screen"><h2>SO</h2><p>Samhälle och geografi!</p><button onclick="showScreen('home')">Tillbaka</button></div>
+  <div id="no" class="screen"><h2>NO</h2><p>Natur och teknik!</p><button onclick="showScreen('home')">Tillbaka</button></div>
+  <div id="svenska" class="screen"><h2>Svenska</h2><p>Läs och skriv!</p><button onclick="showScreen('home')">Tillbaka</button></div>
+  <div id="engelska" class="screen"><h2>Engelska</h2><p>Hello! Let's learn English.</p><button onclick="showScreen('home')">Tillbaka</button></div>
+  <div id="persiska" class="screen"><h2>Persiska</h2><p>سلام! بیایید فارسی یاد بگیریم.</p><button onclick="showScreen('home')">Tillbaka</button></div>
+  <div id="spanska" class="screen"><h2>Spanska</h2><p>¡Hola! Vamos a aprender español.</p><button onclick="showScreen('home')">Tillbaka</button></div>
+  <div id="rymden" class="screen"><h2>Rymden</h2><p>Stjärnor och planeter!</p><button onclick="showScreen('home')">Tillbaka</button></div>
+  <div id="gator" class="screen"><h2>Gåtor</h2><p>Vad har fyra ben på morgonen, två på dagen och tre på kvällen?</p><button onclick="showScreen('home')">Tillbaka</button></div>
+
+  <script>
+    function showScreen(id) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+</body>
+</html>
