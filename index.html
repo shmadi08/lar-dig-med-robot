@@ -7,92 +7,114 @@
   <style>
     body {
       margin: 0;
-      background: #f0e6ff;
-      font-family: Arial, sans-serif;
+      background: linear-gradient(180deg, #ffd6e0, #cce5ff, #fff0cc);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      min-height: 100vh;
     }
-    .screen {
-      display: none;
+    .app {
+      max-width: 400px;
+      margin: 20px auto;
+      background: white;
+      border-radius: 30px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
       text-align: center;
-      padding: 10px;
     }
-    .active { display: block; }
-    img {
-      max-width: 100%;
+    .robot {
+      font-size: 80px;
+      margin: 10px;
+    }
+    h1 { color: #d81b60; margin: 5px; }
+    .stats {
+      background: #f8f0ff;
       border-radius: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      padding: 10px;
+      margin: 15px 0;
+      font-weight: bold;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
     }
     button {
-      background: #7b1fa2;
-      color: white;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
       border: none;
-      padding: 12px 25px;
-      border-radius: 25px;
-      font-size: 16px;
-      margin: 10px;
+      border-radius: 20px;
+      padding: 16px 10px;
+      font-size: 15px;
+      font-weight: bold;
+      color: #333;
       cursor: pointer;
     }
-    .nav {
-      text-align: center;
-      margin: 15px 0;
-    }
+    .screen { display: none; }
+    .active { display: block; }
+    .question { font-size: 30px; color: #7b1fa2; margin: 20px 0; }
   </style>
 </head>
 <body>
-  <div id="home" class="screen active">
-    <img src="https://images.grok.x.ai/imagine_images/uZsDy.jpg" alt="Home">
-    <div class="nav">
-      <button onclick="showScreen('matte')">Gå till Matte</button>
-      <button onclick="showScreen('help')">Behöver du hjälp?</button>
-      <button onclick="showScreen('books')">Böcker</button>
-      <button onclick="showScreen('streak')">Streak</button>
-    </div>
-  </div>
+  <div class="app">
+    <div class="robot">🤖</div>
+    <h1>Lär dig med robot</h1>
+    <div class="stats">🔥 5 &nbsp; 💎 10 &nbsp; 🔷 10 &nbsp; 💜 10</div>
 
-  <div id="matte" class="screen">
-    <img src="https://images.grok.x.ai/imagine_images/Vnw9m.jpg" alt="Matte">
-    <div class="nav">
-      <button onclick="showScreen('question')">Svara på frågorna</button>
+    <div id="home" class="screen active">
+      <div class="grid">
+        <button onclick="showScreen('matte')">Matte</button>
+        <button onclick="showScreen('so')">SO</button>
+        <button onclick="showScreen('no')">NO</button>
+        <button onclick="showScreen('svenska')">Svenska</button>
+        <button onclick="showScreen('engelska')">Engelska</button>
+        <button onclick="showScreen('persiska')">Persiska</button>
+        <button onclick="showScreen('spanska')">Spanska</button>
+        <button onclick="showScreen('rymden')">Rymden</button>
+        <button onclick="showScreen('gator')">Gåtor</button>
+        <button onclick="showScreen('help')">Behöver du hjälp?</button>
+        <button onclick="showScreen('books')">Böcker</button>
+        <button onclick="showScreen('streakScreen')">Streak</button>
+      </div>
+    </div>
+
+    <div id="matte" class="screen">
+      <h2>Matte</h2>
+      <div class="question">7 + 5 = ?</div>
+      <button onclick="correct()" style="background:#81c784;">12</button>
+      <button onclick="wrong()" style="background:#ff8a65;">10</button>
+      <button onclick="wrong()" style="background:#ff8a65;">11</button>
+      <br><br>
       <button onclick="showScreen('home')">Tillbaka</button>
     </div>
-  </div>
 
-  <div id="question" class="screen">
-    <img src="https://images.grok.x.ai/imagine_images/8lT5s.jpg" alt="Fråga">
-    <div class="nav">
-      <button onclick="alert('Rätt! Du är så smart!'); showScreen('success')">12</button>
-      <button onclick="alert('Försök igen!')">10</button>
-      <button onclick="alert('Försök igen!')">11</button>
-      <br>
-      <button onclick="showScreen('matte')">Tillbaka</button>
-    </div>
-  </div>
-
-  <div id="success" class="screen">
-    <img src="https://images.grok.x.ai/imagine_images/brKlB.jpg" alt="Bra jobbat">
-    <div class="nav">
-      <button onclick="showScreen('home')">Tillbaka till start</button>
-    </div>
-  </div>
-
-  <div id="help" class="screen">
-    <img src="https://images.grok.x.ai/imagine_images/iXC9p.jpg" alt="Hjälp">
-    <div class="nav">
+    <div id="help" class="screen">
+      <h2>Behöver du hjälp?</h2>
+      <p>Hej! Jag är din robot. Vad vill du fråga?</p>
+      <textarea rows="4" style="width:90%; border-radius:15px; padding:10px;"></textarea><br><br>
+      <button onclick="alert('Bra fråga! Fortsätt öva!')">Skicka</button>
       <button onclick="showScreen('home')">Tillbaka</button>
     </div>
-  </div>
 
-  <div id="books" class="screen">
-    <img src="https://images.grok.x.ai/imagine_images/pfFVs.jpg" alt="Bokhylla">
-    <div class="nav">
+    <div id="books" class="screen">
+      <h2>Min bokhylla</h2>
+      <button onclick="alert('Roboten läser...')">Sagans skogar</button><br><br>
+      <button onclick="alert('Roboten läser...')">Rymden & stjärnor</button><br><br>
       <button onclick="showScreen('home')">Tillbaka</button>
     </div>
-  </div>
 
-  <div id="streak" class="screen">
-    <img src="https://images.grok.x.ai/imagine_images/2Esad.jpg" alt="Streak">
-    <div class="nav">
+    <div id="streakScreen" class="screen">
+      <h2>Din Streak</h2>
+      <p>Mån ✅ Tis ✅ Ons ✅ Tor ✅ Fre ❄️</p>
+      <p>5 dagar i rad!</p>
       <button onclick="showScreen('home')">Tillbaka</button>
     </div>
+
+    <div id="so" class="screen"><h2>SO</h2><p>Samhälle och geografi!</p><button onclick="showScreen('home')">Tillbaka</button></div>
+    <div id="no" class="screen"><h2>NO</h2><p>Natur och teknik!</p><button onclick="showScreen('home')">Tillbaka</button></div>
+    <div id="svenska" class="screen"><h2>Svenska</h2><p>Läs och skriv!</p><button onclick="showScreen('home')">Tillbaka</button></div>
+    <div id="engelska" class="screen"><h2>Engelska</h2><p>Hello! Let's learn English.</p><button onclick="showScreen('home')">Tillbaka</button></div>
+    <div id="persiska" class="screen"><h2>Persiska</h2><p>سلام! بیایید فارسی یاد بگیریم.</p><button onclick="showScreen('home')">Tillbaka</button></div>
+    <div id="spanska" class="screen"><h2>Spanska</h2><p>¡Hola! Vamos a aprender español.</p><button onclick="showScreen('home')">Tillbaka</button></div>
+    <div id="rymden" class="screen"><h2>Rymden</h2><p>Stjärnor och planeter!</p><button onclick="showScreen('home')">Tillbaka</button></div>
+    <div id="gator" class="screen"><h2>Gåtor</h2><p>Vad har fyra ben på morgonen, två på dagen och tre på kvällen?</p><button onclick="alert('En människa!')">Svar</button><br><br><button onclick="showScreen('home')">Tillbaka</button></div>
   </div>
 
   <script>
@@ -100,6 +122,8 @@
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
     }
+    function correct() { alert('Rätt! Du är så smart! 🌟'); }
+    function wrong() { alert('Försök igen! Du klarar det!'); }
   </script>
 </body>
 </html>
