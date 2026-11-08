@@ -4,106 +4,132 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lär dig med robot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800&display=swap" rel="stylesheet">
   <style>
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
-      padding: 20px;
-      font-family: 'Nunito', 'Comic Sans MS', cursive, sans-serif;
-      background: linear-gradient(180deg, #e0c3fc 0%, #8ec5fc 50%, #fbc2eb 100%);
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(180deg, #d4e4ff 0%, #f0e6ff 40%, #ffe6f0 100%);
       min-height: 100vh;
-      color: #333;
-    }
-    .container {
-      max-width: 420px;
-      margin: 0 auto;
-      background: rgba(255,255,255,0.85);
-      border-radius: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
       padding: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    .app {
+      width: 100%;
+      max-width: 400px;
+      background: rgba(255,255,255,0.9);
+      border-radius: 35px;
+      padding: 25px 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+      text-align: center;
     }
     .robot {
-      width: 120px;
-      height: 120px;
-      background: #2c3e50;
-      border-radius: 30px;
-      margin: 10px auto;
+      width: 140px;
+      height: 150px;
+      margin: 0 auto 10px;
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 60px;
-      color: #00d4ff;
-      box-shadow: 0 0 20px #00d4ff;
     }
-    .robot::before {
-      content: '';
+    .robot-head {
+      width: 100px;
+      height: 80px;
+      background: #1a1a2e;
+      border-radius: 40px;
+      margin: 0 auto;
+      position: relative;
+      box-shadow: 0 0 15px #00d4ff;
+    }
+    .eyes {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      padding-top: 22px;
+    }
+    .eye {
+      width: 22px;
+      height: 22px;
+      background: #00d4ff;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #00d4ff;
+    }
+    .antenna {
+      width: 8px;
+      height: 20px;
+      background: #3498db;
       position: absolute;
-      top: -15px;
+      top: -18px;
       left: 50%;
       transform: translateX(-50%);
-      width: 12px;
-      height: 25px;
-      background: #3498db;
-      border-radius: 6px;
+      border-radius: 4px;
+    }
+    .antenna::after {
+      content: '';
+      width: 14px;
+      height: 14px;
+      background: #00d4ff;
+      border-radius: 50%;
+      position: absolute;
+      top: -10px;
+      left: -3px;
+      box-shadow: 0 0 8px #00d4ff;
     }
     h1 {
-      text-align: center;
-      color: #7b1fa2;
-      font-size: 28px;
-      margin: 10px 0;
+      color: #6a1b9a;
+      font-size: 26px;
+      margin: 5px 0 15px;
     }
-    .top-bar {
+    .stats {
+      display: flex;
+      justify-content: space-around;
       background: white;
       border-radius: 20px;
       padding: 12px;
-      margin: 15px 0;
-      display: flex;
-      justify-content: space-around;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
     }
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 14px;
     }
     button {
-      background: linear-gradient(135deg, #a8edea, #fed6e3);
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
       border: none;
-      border-radius: 20px;
-      padding: 18px 10px;
-      font-size: 16px;
-      font-weight: bold;
+      border-radius: 22px;
+      padding: 18px 8px;
+      font-size: 15px;
+      font-weight: 800;
       color: #333;
       cursor: pointer;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: transform 0.1s;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.1);
     }
     button:active { transform: scale(0.96); }
-    .screen {
-      display: none;
-      text-align: center;
-    }
+    .screen { display: none; }
     .active { display: block; }
-    .question {
-      font-size: 32px;
-      font-weight: bold;
-      margin: 20px 0;
-    }
-    .answer-btn {
-      background: #81c784;
-      margin: 8px;
-      min-width: 100px;
+    .big-question {
+      font-size: 36px;
+      font-weight: 800;
+      margin: 25px 0;
+      color: #6a1b9a;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="robot">🤖</div>
+  <div class="app">
+    <div class="robot">
+      <div class="antenna"></div>
+      <div class="robot-head">
+        <div class="eyes">
+          <div class="eye"></div>
+          <div class="eye"></div>
+        </div>
+      </div>
+    </div>
     <h1>Lär dig med robot</h1>
 
-    <div class="top-bar">
+    <div class="stats">
       <span>🔥 5</span>
       <span>💎 10</span>
       <span>🔷 10</span>
@@ -129,44 +155,44 @@
 
     <div id="matte" class="screen">
       <h2>Matte</h2>
-      <div class="question">7 + 5 = ?</div>
-      <button class="answer-btn" onclick="correct()">12</button>
-      <button class="answer-btn" onclick="wrong()">10</button>
-      <button class="answer-btn" onclick="wrong()">11</button>
+      <div class="big-question">7 + 5 = ?</div>
+      <button onclick="correct()" style="background:#81c784; margin:8px;">12</button>
+      <button onclick="wrong()" style="background:#81c784; margin:8px;">10</button>
+      <button onclick="wrong()" style="background:#81c784; margin:8px;">11</button>
       <br><br>
       <button onclick="showScreen('home')">Tillbaka</button>
     </div>
 
     <div id="help" class="screen">
       <h2>Behöver du hjälp?</h2>
-      <p>Hej! Jag är din robot. Vad vill du fråga?</p>
-      <textarea rows="4" style="width:90%; border-radius:15px; padding:10px;" placeholder="Skriv här..."></textarea><br><br>
+      <p style="margin:15px 0;">Hej! Jag är din robot. Vad vill du fråga?</p>
+      <textarea rows="4" style="width:90%; border-radius:15px; padding:12px; font-size:16px;" placeholder="Skriv här..."></textarea><br><br>
       <button onclick="alert('Bra fråga! Fortsätt öva så blir du ännu bättre!')">Skicka</button>
       <button onclick="showScreen('home')">Tillbaka</button>
     </div>
 
     <div id="books" class="screen">
       <h2>Min bokhylla</h2>
-      <button onclick="alert('Roboten läser boken...')">Sagans skogar</button><br><br>
-      <button onclick="alert('Roboten läser boken...')">Rymden & stjärnor</button><br><br>
+      <button onclick="alert('Roboten läser...')">Sagans skogar</button><br><br>
+      <button onclick="alert('Roboten läser...')">Rymden & stjärnor</button><br><br>
       <button onclick="showScreen('home')">Tillbaka</button>
     </div>
 
     <div id="streakScreen" class="screen">
       <h2>Din Streak</h2>
-      <p>Mån ✅ Tis ✅ Ons ✅ Tor ✅ Fre ❄️</p>
+      <p style="font-size:18px; margin:15px 0;">Mån ✅ Tis ✅ Ons ✅ Tor ✅ Fre ❄️</p>
       <p>5 dagar i rad! Fortsätt så!</p>
       <button onclick="showScreen('home')">Tillbaka</button>
     </div>
 
-    <div id="so" class="screen"><h2>SO</h2><p>Samhälle och geografi!</p><button onclick="showScreen('home')">Tillbaka</button></div>
-    <div id="no" class="screen"><h2>NO</h2><p>Natur och teknik!</p><button onclick="showScreen('home')">Tillbaka</button></div>
-    <div id="svenska" class="screen"><h2>Svenska</h2><p>Läs och skriv!</p><button onclick="showScreen('home')">Tillbaka</button></div>
-    <div id="engelska" class="screen"><h2>Engelska</h2><p>Hello! Let's learn English.</p><button onclick="showScreen('home')">Tillbaka</button></div>
-    <div id="persiska" class="screen"><h2>Persiska</h2><p>سلام! بیایید فارسی یاد بگیریم.</p><button onclick="showScreen('home')">Tillbaka</button></div>
-    <div id="spanska" class="screen"><h2>Spanska</h2><p>¡Hola! Vamos a aprender español.</p><button onclick="showScreen('home')">Tillbaka</button></div>
-    <div id="rymden" class="screen"><h2>Rymden</h2><p>Stjärnor och planeter!</p><button onclick="showScreen('home')">Tillbaka</button></div>
-    <div id="gator" class="screen"><h2>Gåtor</h2><p>Vad har fyra ben på morgonen, två på dagen och tre på kvällen?</p><button onclick="alert('En människa!')">Svar</button><br><br><button onclick="showScreen('home')">Tillbaka</button></div>
+    <div id="so" class="screen"><h2>SO</h2><p>Samhälle och geografi!</p><br><button onclick="showScreen('home')">Tillbaka</button></div>
+    <div id="no" class="screen"><h2>NO</h2><p>Natur och teknik!</p><br><button onclick="showScreen('home')">Tillbaka</button></div>
+    <div id="svenska" class="screen"><h2>Svenska</h2><p>Läs och skriv!</p><br><button onclick="showScreen('home')">Tillbaka</button></div>
+    <div id="engelska" class="screen"><h2>Engelska</h2><p>Hello! Let's learn English.</p><br><button onclick="showScreen('home')">Tillbaka</button></div>
+    <div id="persiska" class="screen"><h2>Persiska</h2><p>سلام! بیایید فارسی یاد بگیریم.</p><br><button onclick="showScreen('home')">Tillbaka</button></div>
+    <div id="spanska" class="screen"><h2>Spanska</h2><p>¡Hola! Vamos a aprender español.</p><br><button onclick="showScreen('home')">Tillbaka</button></div>
+    <div id="rymden" class="screen"><h2>Rymden</h2><p>Stjärnor och planeter!</p><br><button onclick="showScreen('home')">Tillbaka</button></div>
+    <div id="gator" class="screen"><h2>Gåtor</h2><p>Vad har fyra ben på morgonen, två på dagen och tre på kvällen?</p><br><button onclick="alert('En människa!')">Svar</button><br><br><button onclick="showScreen('home')">Tillbaka</button></div>
   </div>
 
   <script>
@@ -174,12 +200,8 @@
       document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
       document.getElementById(id).classList.add('active');
     }
-    function correct() {
-      alert('Rätt! Du är så smart! 🌟');
-    }
-    function wrong() {
-      alert('Försök igen! Du klarar det!');
-    }
+    function correct() { alert('Rätt! Du är så smart! 🌟'); }
+    function wrong() { alert('Försök igen! Du klarar det!'); }
   </script>
 </body>
 </html>
